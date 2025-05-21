@@ -8,7 +8,7 @@
 ## 🚀 About Me  
 
 - 🎓 Final-year student passionate about leveraging cloud technologies to solve real-world problems.  
-- 🛠️ Currently a **DevOps Intern**, building and optimizing CI/CD pipelines, configuring servers, managing DNS, and setting up SSL.  
+- 🛠️  A **DevOps Engineer**, building and optimizing CI/CD pipelines, configuring servers, managing DNS, and setting up SSL.  
 - 🌐 Leader of the **Microsoft Learn Student Club (MLSC)** at SMIU, focused on bridging the gap between industry and academia.  
 - 🧑‍💻 Previously hosted a static website on AWS with S3, CloudFront, and Route 53.  
 - 🎯 Exploring **YAML**, **GitHub Actions**, and **Kubernetes** to elevate my DevOps expertise.  
