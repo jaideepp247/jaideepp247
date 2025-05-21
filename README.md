@@ -19,7 +19,7 @@
 
 - **Languages:** Python, Bash, YAML  
 - **DevOps Tools:** Docker, Nginx, GitHub Actions, Azure DevOps  
-- **Cloud Providers:** AWS (S3, EKS, CloudFront), Azure
+- **Cloud Providers:** AWS (EC2, RDS, S3, EKS, CloudFront), Azure
 
 ---
 <h3 align="left">Languages and Tools:</h3>
