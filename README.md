@@ -25,9 +25,6 @@
 
 ## 🌟 Achievements  
 
-- 💼 Configured dynamic DNS and SSL for multiple applications using Nginx and cPanel.  
-- 📦 Deployed and managed containerized applications using Docker and Kubernetes on AWS EKS.  
-- 🛡️ Set up and maintained firewall configurations for secure application hosting.  
 
 ---
 
