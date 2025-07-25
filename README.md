@@ -37,4 +37,4 @@
 
 ### 🎉 Fun Fact  
 
-I love transforming tech challenges into learning opportunities while building a vibrant and impactful community of learners. 🚀  
+I love transforming tech challenges into learning opportunities
