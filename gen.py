@@ -129,52 +129,53 @@ class Term:
 
 
 # ---------- Scene 1: hero session ----------
-t = Term(760, "jai-deep — devops — ~")
+t = Term(920, "jai-deep — devops — ~")
 t.prompt("whoami")
-t.line([("jai deep", FG, True), ("  devops engineer · karachi, pk", DIM)])
+t.line([("jai deep", FG, True), ("   devops engineer · karachi, pk", DIM)])
 t.blank()
-t.prompt("./deploy.sh --env production")
-t.step("build image")
-t.step("push → ecr")
-t.step("rollout ecs service", delay=0.75)
-t.step("health check", delay=0.65)
-t.step("secret scan", "clean")
-t.line([("✔ ", GREEN, True), ("live", FG, True), ("  0 downtime · rollback armed", DIM)], delay=0.5)
+t.prompt("journalctl -u jai.service -o cat --no-pager")
+log = [
+    ("lead devops across the org",           "infra · pipelines · security · mentoring"),
+    ("100+ apps shipped to production",      "aws · azure · gcp · digitalocean · hetzner · strato"),
+    ("hardened 70+ ci/cd pipelines",         "killed long-lived pats · gitleaks · automated rollback"),
+    ("frontend cve audit across 200+ repos", "findings + remediation paths routed to owning teams"),
+    ("cross-platform deployment framework",  "full stack on linux, windows, macos from one interface"),
+    ("devs stopped needing server access",   "pm2 logs, metrics + control · rbac enforced server-side"),
+    ("wired an llm reviewer into pr checks", "qodo + gpt-4o, automated first-pass review"),
+]
+for what, detail in log:
+    t.line([(f"{what:<38}", FG, True), (detail, DIM)], delay=0.34)
 t.blank()
 t.cursor()
 (OUT / "hero.svg").write_text(t.render())
 
-# ---------- Scene 2: skills as services ----------
-t = Term(760, "systemctl — skills")
-t.prompt("systemctl list-units --type=skill")
-t.line([("  ", DIM), (f"{'UNIT':<24}", DIM), (f"{'ACTIVE':<13}", DIM), (f"{'SUB':<11}", DIM), ("NOTES", DIM)], delay=0.25)
+# ---------- Scene 2: stack as systemd units ----------
+t = Term(920, "systemctl — stack")
+t.prompt("systemctl list-units --type=stack")
+t.line([("  ", DIM), (f"{'UNIT':<21}", DIM), (f"{'ACTIVE':<9}", DIM), ("PROVIDES", DIM)], delay=0.25)
 rows = [
-    ("aws.service",            "active",     "running",  "ec2 ecs rds s3 cloudfront route53 alb vpc", GREEN),
-    ("azure.service",          "active",     "running",  "vms · storage · dns",                       GREEN),
-    ("gcp.service",            "active",     "running",  "compute · dns",                             GREEN),
-    ("github-actions.service", "active",     "running",  "codepipeline · codedeploy · gitleaks",      GREEN),
-    ("docker.service",         "active",     "running",  "ecs · ecr",                                 GREEN),
-    ("nginx.service",          "active",     "running",  "caddy · cloudflare tunnels · ssl/tls",      GREEN),
-    ("bash.service",           "active",     "running",  "+ powershell · linux/win/mac",              GREEN),
-    ("terraform.service",      "active",     "running",  "basics",                                    GREEN),
-    ("kubernetes.service",     "activating", "start",    "learning",                                  YELLOW),
-    ("prometheus.service",     "inactive",   "dead",     "next up",                                   DIM),
+    ("aws.service",        "ec2 · rds · s3 · cloudfront · route53 · alb · asg · vpc · cloudwatch"),
+    ("providers.service",  "azure · gcp · digitalocean · hetzner · strato"),
+    ("cicd.service",       "github actions · codepipeline · codedeploy · health checks + rollback"),
+    ("containers.service", "docker · buildx multi-arch (amd64 · arm64) · ecs · ecr"),
+    ("selfhosted.service", "coolify · garage · rustfs · s3-compatible storage on-prem"),
+    ("networking.service", "nginx · caddy · cloudflare tunnels · dns · tls + cert automation"),
+    ("security.service",   "gitleaks · scoped ci tokens · dependency cve audits"),
+    ("automation.service", "bash · powershell · terraform · across linux, windows, macos"),
 ]
-for unit, active, sub, notes, c in rows:
-    dot = "●" if c is not DIM else "○"
-    t.line([(f"{dot} ", c, True), (f"{unit:<24}", FG), (f"{active:<13}", c), (f"{sub:<11}", DIM), (notes, DIM)], delay=0.14)
+for unit, provides in rows:
+    t.line([("● ", GREEN, True), (f"{unit:<21}", FG), (f"{'active':<9}", GREEN), (provides, DIM)], delay=0.16)
 t.blank()
-t.line([("10 loaded units listed.", DIM)], delay=0.2)
+t.line([("8 loaded units listed. all active.", DIM)], delay=0.2)
 t.cursor()
 (OUT / "skills.svg").write_text(t.render())
 
 # ---------- Scene 3: contact ----------
-t = Term(760, "contact — ~")
+t = Term(920, "contact — ~")
 t.prompt("cat ~/.contact")
-t.line([("email     ", DIM), ("jaideepp247@gmail.com", BLUE)])
-t.line([("linkedin  ", DIM), ("linkedin.com/in/jaideep247", BLUE)])
-t.line([("writing   ", DIM), ("dev.to/jaideep247", BLUE)])
-t.line([("open to   ", DIM), ("remote devops / cloud roles", FG)])
+t.line([("email      ", DIM), ("jaideepp247@gmail.com", BLUE)])
+t.line([("linkedin   ", DIM), ("linkedin.com/in/jaideep247", BLUE)])
+t.line([("writing    ", DIM), ("dev.to/jaideep247", BLUE)])
 t.cursor()
 (OUT / "contact.svg").write_text(t.render())
 
